@@ -1,11 +1,10 @@
-{% extends 'cooperator/base.html'%}
+{% extends 'saving/base_saving.html'%}
 
 {% block content%}
-
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h4 class="text-center alert alert alert-info"> AJOUTER UN COOPERATEUR</h4>
+            <h4 class="text-center alert alert alert-info"> AJOUTER UNE EPARGNE</h4>
             <form action="" method="POST">
                 {%csrf_token%}
                 {{ form.as_p}}
@@ -15,32 +14,32 @@
 
         </div>
         <div class="col-sm-8">
-            <h4 class="text-center  alert alert-info"> INFORMATIONS GENERALES SUR LES COOPERATEURS </h4>
-            {% if coopera %}
+            <h4 class="text-center  alert alert-info"> INFORMATIONS GENERALES SUR LES EPARGNES EFFECTUEES </h4>
+            {% if solde %}
             <table class=" table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col"> nom</th>
-                        <th scope="col">prenom</th>
-                        <th scope="col">tel</th>
-                        <th scope="col">role</th>
-                        <th scope="col">password</th>
+                        <th scope="col">montant_epargne</th>
+                        <th scope="col">ancien_solde</th>
+                        <th scope="col">nouveau_solde</th>
+                        <th scope="col">Date_epargne</th>
+                        <th scope="col">id_pers</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for coop in coopera %}
+                    {% for sol in solde %}
                     <tr>
-                        <th scope="row"> {{coop.id}} </th>
-                        <td>{{coop.nom_pers}}</td>
-                        <td>{{coop.prenom_pers}}</td>
-                        <td>{{coop.tel_pers}}</td>
-                        <td>{{coop.role_pers}}</td>
-                        <td>{{coop.password_pers}}</td>
+                        <th scope="row"> {{sol.id}} </th>
+                        <td>{{sol.montant_epargne}}</td>
+                        <td>{{sol.ancien_solde}}</td>
+                        <td>{{sol.nouveau_solde}}</td>
+                        <td>{{sol.Date_epargne}}</td>
+                        <td>{{sol.id_pers}}</td>
                         <td>
-                            <a href="{% url 'updatedata' coop.id %}" class="btn btn-warning btn-sm">Modifier</a>
-                            <form action="{% url 'deletedata' coop.id %}" method="POST" class="d-inline">
+                            <a href="{% url 'updatedata' sol.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                            <form action="{% url 'deletedata' sol.id %}" method="POST" class="d-inline">
 
                                 <input type="submit" class="btn btn-danger" value="Supprimer">
                                 {%csrf_token%}
@@ -57,5 +56,4 @@
         </div>
     </div>
 </div>
-
 {% endblock content%}

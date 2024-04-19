@@ -21,6 +21,7 @@ from GestCoopecphamApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.add_cooperator, name = "addcooperator"),
-    path('delete/<int:id>/',views.delete_data, name = "deletedata"),
-    path('<int:id>/',views.update_data, name = "updatedata"),
+    path('delete/<int:id>/',views.delete_data_cooperateur, name = "deletedata"),
+    path('<int:id>/',views.update_data_cooperateur, name = "updatedata"),
+    path('addsaving/',views.add_saving, name = "addsaving")
 ]
