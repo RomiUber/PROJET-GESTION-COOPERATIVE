@@ -1,0 +1,61 @@
+{% extends 'cooperator/base.html'%}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="text-center alert alert alert-info"> AJOUTER UN COOPERATEUR</h4>
+            <form action="" method="POST">
+                {%csrf_token%}
+                {{ form.as_p}}
+                <button type="submit" class="btn btn-success">Ajouter</button>
+
+            </form>
+
+        </div>
+        <div class="col-sm-8">
+            <h4 class="text-center  alert alert-info"> PRESENTATION DES INFORMATIONS D'UN COOPERATEUR</h4>
+            {% if coopera %}
+            <table class=" table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col"> nom</th>
+                        <th scope="col">prenom</th>
+                        <th scope="col">tel</th>
+                        <th scope="col">role</th>
+                        <th scope="col">password</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for coop in coopera %}
+                    <tr>
+                        <th scope="row"> {{coop.id}} </th>
+                        <td>{{coop.nom_pers}}</td>
+                        <td>{{coop.prenom_pers}}</td>
+                        <td>{{coop.tel_pers}}</td>
+                        <td>{{coop.role_pers}}</td>
+                        <td>{{coop.password_pers}}</td>
+                        <td>
+                            <a href="{% url 'updatedata' coop.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                            <form action="{% url 'deletedata' coop.id %}" method="POST" class="d-inline">
+
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
+                                {%csrf_token%}
+                                
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else%}
+            <h4 class="text-center alert alert alert-warning">PAS D'ENREGISTREMENTS</h4>
+            {% endif%}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

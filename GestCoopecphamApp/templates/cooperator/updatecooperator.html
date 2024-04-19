@@ -1,0 +1,17 @@
+{% extends 'cooperator/base.html'%}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 class=" text-center alert alert-info"> Modification des informations d'un cooperateur</h4>
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-success" value="Modifier">
+                <a href="{% url 'addcooperator' %}" class="btn btn-info"> Retour en arriere</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content%}

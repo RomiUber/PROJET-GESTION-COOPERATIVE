@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Cooperateurs</title>
+    <link rel="stylesheet" href="{% static 'cooperateur/css/bootstrap.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="center">
+            <h1 class="text-center  alert alert-warning "> GESTION DES COOPERATEURS </h1>
+            {% block content%} {% endblock content%}
+        </div>
+    </div>
+
+    <script src="{% static 'cooperateur/js/jquery.js' %}"></script>
+    <script src="{% static 'cooperateur/js/bootstrap.js' %}"></script>
+    <script src="{% static 'cooperateur/js/popper.js' %}"></script>
+</body>
+
+</html>
